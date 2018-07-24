@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[TEST]]></title>
+    <url>%2F2018%2F07%2F19%2FTEST%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[浅谈JVM内存结构一]]></title>
+    <url>%2F2018%2F07%2F18%2F%E6%B5%85%E8%B0%88JVM%E5%86%85%E5%AD%98%E7%BB%93%E6%9E%84%E4%B8%80%2F</url>
+    <content type="text"><![CDATA[众所周知，Java是一款可以跨平台的编程语言，无论是在Windows，MacOS上，还是安卓手机，苹果手机，哪怕是最老版的塞班手机上都可以运行。拥有这么好的跨平台性，主要还是靠的一手好虚拟机。 JVM（Java Virtual Machine），全称Java虚拟机。是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。—————-上面是百度的解释，hhhhh。 下面是JVM的基本机构： java在运行程序时，需要在内存中开辟一部分空间，而这部分空间就是来运行JVM，JVM拿到空间之后就对内存空间进行了功能的划分，以保证java虚拟机有足够的运行效率。 具体划分为下面五个内存空间： 栈：存放局部变量 堆：存放所有new出来的东西 方法区：被虚拟机加载的类信息、常量、静态常量等。 程序计数器(和系统相关) 本地方法栈 程序计数器： 程序计数器（Program Counter Register）是JVM中一块较小的内存区域，保存着当前线程执行的虚拟机字节码指令的内存地址。Java多线程的实现，其实是通过线程间的轮流切换并分配处理器执行时间的方式来实现的，在任何时刻，处理器都只会执行一个线程中的指令。在多线程场景下，为了保证线程切换回来后，还能恢复到原先状态，找到原先执行的指令，所以每个线程都会设立一个程序计数器，并且各个线程之间不会互相影响，程序计数器为”线程私有”的内存区域。 如果当前线程正在执行Java方法，则程序计数器保存的是虚拟机字节码的内存地址，如果正在执行的是Native方法（非Java方法，JVM底层有许多非Java编写的函数实现），计数器则为空。程序计数器是唯一一个在Java规范中没有规定任何OutOfMemory场景的区域。 虚拟机栈： 虚拟机栈（Java Virtual Machine Stacks）和线程是紧密联系的，每创建一个线程时就会对应创建一个Java栈，所以Java栈也是”线程私有”的内存区域，这个栈中又会对应包含多个栈帧，每调用一个方法时就会往栈中创建并压入一个栈帧，栈帧是用来存储方法数据和部分过程结果的数据结构，每一个方法从调用到最终返回结果的过程，就对应一个栈帧从入栈到出栈的过程。 虚拟机栈是一个后入先出的数据结构，线程运行过程中，只有一个栈帧是处于活跃状态的，被称为”当前活动帧栈”，当前活动帧栈始终是虚拟机栈的栈顶元素。 本地方法栈： 本地方法栈（Native Method Stack）和虚拟机栈的作用相似，不过虚拟机栈是为Java方法服务的，而本地方法栈是为Native方法服务的。 方法区： 方法区（Method Area）是用于存储类结构信息的地方，包括常量池、静态变量、构造函数等类型信息，类型信息是由类加载器在类加载时从类文件中提取出来的。 方法区同样存在垃圾收集，因为用户通过自定义加载器加载的一些类同样会成为垃圾，JVM会回收一个未被引用类所占的空间，以使方法区的空间达到最小。 方法区中还存在着常量池，常量池包含着一些常量和符号引用（加载类的连接阶段中的解析过程会将符号引用转换为直接引用）。 方法区是线程共享的。 堆： 堆（heap）是存储java实例或者对象的地方，是GC的主要区域，同样是线程共享的内存区域。 总的来说啊，对于JVM的内存结构，主要简单理解以下几点： 1、所有线程共享的内存数据区：方法区，堆。而虚拟机栈，本地方法栈和程序计数器都是线程私有的。 2、存放于栈中的东西如下： 2.1 每个线程包含一个栈区,栈中只保存基础数据类型的对象和自定义对象的引用(不是对象)。对象都存放在堆区中。 2.2 每个栈中的数据(基础数据类型和对象引用)都是私有的，其他栈不能访问。 2.3 方法的形式参数，方法调用完后从栈空间回收 2.4 引用对象的地址，引用完后，栈空间地址立即被回收，堆空间等待GC 3、存放于堆中的东西如下： 3.1 存储的全部是对象，每个对象包含一个与之对应的class信息 3.2 Jvm只有一个堆区（heap）被所有线程共享，堆区中不存放基本类型和对象引用，只存放对象本身 4、存放于方法区中的东西如下： 4.1 存放线程所执行的字节码指令 4.2 跟堆一样.被所有线程共享.方法区包含：所有的class和static变量 4.3 常量池位于方法区中，见如下图示说明]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>虚拟机</tag>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java的static的概念与使用]]></title>
+    <url>%2F2018%2F07%2F08%2FJava%E7%9A%84static%E7%9A%84%E6%A6%82%E5%BF%B5%E4%B8%8E%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[static——静态修饰符，一般用于OOP编程时对类里的变量和方法修饰。而修饰后的所有变量和方法属于该类，所以修饰后的变量又叫做类变量。static修饰后的类变量和方法，在运行时主要是保存在虚拟机内存的方法区（method）中。所以，在加载类时，方法和变量一同被加载。（关于这部分，细看“浅谈JVM内存结构”）所以，不需要创建对象就可以直接对类中static所修饰的方法进行直接调用。例如下代码： public class Car { //常量必需要初始值【组件属性】 public static final String COLOR=&quot;RED&quot;; //用static修饰的[所有]对象共享 static String brand=&quot;BMW&quot;; //非静态的变量 String type=&quot;4S&quot;; public static String getBrand(){ //静态的方法可以访问静态的变量 //静态的方法不可以直接访问非静态的变量【非静态的变量需要创建对象后才能使用】 return brand; //Car car=new Car(); //return car.type; } public String getType(){ return type; } } public class Test { public static void main(String[] args) { Car car=new Car(); //System.out.println(car.COLOR); System.out.println(car.brand); //用静态修饰的变量可以通过类直接访问 System.out.println(Car.brand); //非静态的变量需要创建对象后再使用 System.out.println(car.type); //静态方法可以直接使用 Car.getBrand(); //非静态的方法必须要创建实例后才能使用 car.getType(); } } 在Test类中的main方法里可以直接调用Car类中的static变量和方法，不需要创建新的对象。对于没有用static修饰的变量和方法来说就必须要创建的新的对象之后才能被调用。 含有static修饰的变量和方法的类的所创建的新的对象本身没有实际的static对象，只有一个地址用于引导到类中变量所保存到地址，所以说，但通过对象修改static的变量时，所有的该类所创建的对象的对应变量值都会被修改，如下代码（还是用上述的Car类）： public class Test { public static void main(String[] args) { //创建两个不同的对象 Car car=new Car(); Car car2=new Car(); //输出两个对象的brand变量 System.out.println(car.brand); System.out.println(car2.brand); //修改其中一个变量的值 car.brand = &quot;奔驰&quot;; //再次输出输出两个对象的brand变量 System.out.println(car.brand); System.out.println(car2.brand); } } 结果如下图： 综上所述，我们可以理解static在实际使用时，基本上是配黑常量修饰词（final）和成员变量修饰词（public）一起使用，从而定义一些不需要修改而且随时可以取值调用的变量和方法。例如Math类中的PI和E： 以上就是我的对于static修饰符的使用和概念的理解。]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>基本知识</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2018%2F07%2F08%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[世界杯——别了梅罗。]]></title>
+    <url>%2F2018%2F07%2F02%2F%E4%B8%96%E7%95%8C%E6%9D%AF%E6%A2%85%E7%BD%97%E5%87%BA%E5%B1%80%2F</url>
+    <content type="text"><![CDATA[2018年世界杯小组赛已经结束了，作为一个完完全全的业余球迷，也就每四年看看世界杯了。但是确实很喜欢C罗和梅西。2006年他们第一次参加世界杯时，我还是个小学生（尴尬）。但是从2010年世界杯开始就慢慢的开始关注他们，虽然可能在欧冠，他们的能力有更加好的发挥空间。但是不知道为什么，还是很喜欢看世界杯上的比赛。 梅西给我印象最深的还是2014年的世界杯，那时候的梅西在欧冠期间发挥也十分一般，十分的压抑。但是在世界杯第一场小组赛上一球完美的死角射球让他找回了自己，接下来的比赛让我看到了一个正真的梅西，一个正真的阿根廷的皇牌球员。 而C罗在往届世界杯上，都只有一个进球。但是在这届世界杯上，尤其是与西班牙的第一场比赛，真是让人感觉到C罗的个人能力，凭借着自己的能力一度让葡萄牙冲出了小组赛。实在是强大。在最后一场对阵乌拉圭的比赛中，C罗也是尽力争取这每一球，最后激动地吃了黄牌，看见C罗对这场比赛胜利的渴望，十分心疼了。 这届世界杯听说阿根廷内部有很大的矛盾，导致球队内部混乱。其实我作为完完全全的伪球迷并不在乎，也不关注这些。喜欢看到的仅仅是球员为了国家的荣誉拼尽了自己的全力。这份血性是真的看得十分的让人热血沸腾。 比赛结束后，看到梅西和C罗抬头仰望天空的时候，真是十分心疼了。最后，我想说中国队如果真的有希望能进世界杯的话，真的不一定要取得很好的名次才能证明自己，只要能提出血性，国人一定也会为之自豪的。 以上皆是一个十分业余球迷的看世界杯的感受，请真球迷别看也别喷。]]></content>
+      <tags>
+        <tag>个人兴趣</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[关于Java方法重载原理]]></title>
+    <url>%2F2018%2F06%2F30%2F%E5%85%B3%E4%BA%8EJava%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E5%8E%9F%E7%90%86%2F</url>
+    <content type="text"><![CDATA[在Java面向对象编程中，有关于方法的最经典的设计就是方法重载，方法重载在很大程度上减少了代码命名时的麻烦。减少了代码名字的重复出现，又方便了通过不同的参数来调用不同的函数。给面相对象的多态性提供了良好的基础。 那么，java中的方法是如何实现所谓的重载的呢，计算机又是如何判断调用哪个函数的呢。 首先我们先要了解一个概念，就是方法签名，方法签名是唯一识别方法的方式。只有方法签名系统才能区分重载方法之间的去别。那么方法签名是由什么构成的呢。方法签名包括：返回参数类型，方法名以及形参的个数或类型。但是决定方法名不同的是方法名以及方法的形参或者类型的不同。 多说无益,写一段代码大家就清楚了 public class TestMethod5 { public static void test1(int a,int b){ } public static void test1(int a){ } public static int test1(int c,double a){ return 1; } public static void main(String[] args) { //应用 jvm自动根据 变量的类型来匹配寻找合适的方法 System.out.println(max(1,2L)); } public static int max(int a,int b){ System.out.println(&quot;int max&quot;); return a&gt;b?a:b; } public static long max(long a,long b){ System.out.println(&quot;long max&quot;); return a&gt;b?a:b; } } 上面就是一个十分简易的方法重载的例子，接下来让我们找到这个类所生成的class文件的样子。 从上述图片可以看出，每一个重载方法在class文件中名字都产生了变化。使得方法之前有了区别。这样调用时就能更加的明确 以上就是我对于方法重载的原理的理解]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>基本知识</tag>
+        <tag>面向对象</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java debug的使用（中文版eclipse）]]></title>
+    <url>%2F2018%2F06%2F29%2FJava-debug%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88%E4%B8%AD%E6%96%87%E7%89%88eclipse%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[在编写语言的过程中，我们往往会产生很多的错误。在现在的高级语言中和良好的编译器，许多的语法语义的错误都能被计算机快速查出来并提示位置。于是乎我们不必要花时间去查找程序的一些基本的错误。但是，涉及到逻辑错误时，计算机往往无法纠正，所以我们需要人工去寻找我们的错误，于是就有了debug的存在。今天我先总结一下自己在使用Java的中文版eclipse时，进行debug的步骤。 步骤先设置断点 点击调试运行 弹出窗口，点击确定 Debug界面介绍 Debug与开发界面切换 Debug快捷键F5:进入方法调试，代码界面跳转到方法中去F6:逐行运行，一行行的运行代码F7:跳出方法F8:继续执行，直至结束当前程序或者找到下一断点 以上就是我对与Debug步骤的总结]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>基本知识</tag>
+        <tag>eclipse</tag>
+        <tag>Debug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JDK相关知识]]></title>
+    <url>%2F2018%2F06%2F28%2FJDK%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%2F</url>
+    <content type="text"><![CDATA[JDKJDK全称为JavaDevelopmenttoolKit(Java开发工具包),相当于Java的函数库,其作用主要是为当前平台提供一个编译和运行环境，是Java程序作为跨平台语言的一个关键点。 JDK目录介绍- Bin:-工具 window系统是exe文件-Javac 编译工具-Java 启动jvm运行class文件 - DB: 数据管理开发包- Include: *.h文件 java运行的底层是用c实现的,无论是什么系统还是不同的设备，都是由C语言书写的底层。- Jre: java runtime environment java运行环境 调试时需要运行环境 - Lib: 运行需要的库 以及调试jvm的工具。 - src.zip: java的源代码,Java开发中调用的所有方法的源代码保存的地方。 JRE全称为Java Runtime Environment(Java运行环境)，在Java项目中，与JDK文件在同一目录下的单独的jre目录用于部署项目时使用 JVM全称Java Virtual Machine(Java虚拟机)，当Java程序需要运行时，Java在内存中开辟一个新的区域用于运行Java虚拟机。所以JVM是一个动态概念 由jre创建并存在于内存当中 jdk jre属于静态的概念【硬盘中的一个文件】 以上就是JDK的一些基本的目录结构和基本作用]]></content>
+      <tags>
+        <tag>Java</tag>
+        <tag>基本知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python批量修改文件名脚本]]></title>
+    <url>%2F2018%2F06%2F02%2FPython%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E5%90%8D%E8%84%9A%E6%9C%AC%2F</url>
+    <content type="text"><![CDATA[第一次的博客，这两天再用专门的音乐播放器听歌，但是这个英语播放器不能下载歌曲，只能通过其他软件来获取无损音乐，然后在放置在这个音乐播放器上听取，但是由于播放器的文件读取格式和下载音乐的播放器的下载的歌曲格式不一样。所以在获取歌词和海报时会有很多不便，现在就是需要把本地音乐的格式更改一下，把歌手名字放在音乐名字后面。就像下面我给的具体测试一样。但是又不想用手一个个该，不然可太蠢了啊。所以决定用python写个小脚本，来处理这些文件。本人此时还是个大学生，也是第一次写博客，往大家多多照顾。下面贴图和代码 import os; count=0; def rename(): path=&apos;music/&apos;; filelist = os.listdir(path) for files in filelist: Olddir = os.path.join(path,files); if os.path.isdir(Olddir): continue; filename = os.path.splitext(files)[0]; filetype = os.path.splitext(files)[1]; print filename; if filename.find(&apos;-&apos;)&gt;=0: Newdir=os.path.join(path,filename.split(&apos;-&apos;)[1]+&apos;-&apos;+filename.split(&apos;-&apos;)[0]+filetype); if not os.path.isfile(Newdir): os.rename(Olddir,Newdir); rename();]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>程序猿</tag>
+        <tag>脚本</tag>
+        <tag>程序与生活</tag>
+      </tags>
+  </entry>
+</search>
