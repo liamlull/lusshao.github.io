@@ -159,6 +159,134 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java集合中的删除和修改方法的具体实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/04/Java集合中的删除和修改方法的具体实现/">Java集合中的删除和修改方法的具体实现</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/04/Java集合中的删除和修改方法的具体实现/" class="archive-article-date">
+  	<time datetime="2018-08-04T01:09:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Java中的集合是我们经常使用的Java工具类，Collection接口还有俩个子类。一个是List，一个是Set</p>
+<p>1.List特点：有序的，元素可重复<br>2.Set特点：无序的，元素不可重复</p>
+<p>在Java的API中，Collection接口一共要求实现以下方法。</p>
+<pre><code> boolean add(E e) 
+          将指定的元素添加到此列表的尾部。 
+ void add(int index, E element) 
+          将指定的元素插入此列表中的指定位置。 
+ boolean addAll(Collection&lt;? extends E&gt; c) 
+          按照指定 collection 的迭代器所返回的元素顺序，将该 collection 中的所有元素添加到此列表的尾部。 
+ boolean addAll(int index, Collection&lt;? extends E&gt; c) 
+          从指定的位置开始，将指定 collection 中的所有元素插入到此列表中。 
+ void clear() 
+          移除此列表中的所有元素。 
+ Object clone() 
+          返回此 ArrayList 实例的浅表副本。 
+ boolean contains(Object o) 
+          如果此列表中包含指定的元素，则返回 true。 
+ void ensureCapacity(int minCapacity) 
+          如有必要，增加此 ArrayList 实例的容量，以确保它至少能够容纳最小容量参数所指定的元素数。 
+ E get(int index) 
+          返回此列表中指定位置上的元素。 
+ int indexOf(Object o) 
+          返回此列表中首次出现的指定元素的索引，或如果此列表不包含元素，则返回 -1。 
+ boolean isEmpty() 
+          如果此列表中没有元素，则返回 true 
+ int lastIndexOf(Object o) 
+          返回此列表中最后一次出现的指定元素的索引，或如果此列表不包含索引，则返回 -1。 
+ E remove(int index) 
+          移除此列表中指定位置上的元素。 
+ boolean remove(Object o) 
+          移除此列表中首次出现的指定元素（如果存在）。 
+protected  void removeRange(int fromIndex, int toIndex) 
+          移除列表中索引在 fromIndex（包括）和 toIndex（不包括）之间的所有元素。 
+ E set(int index, E element) 
+          用指定的元素替代此列表中指定位置上的元素。 
+ int size() 
+          返回此列表中的元素数。 
+ Object[] toArray() 
+          按适当顺序（从第一个到最后一个元素）返回包含此列表中所有元素的数组。 
+&lt;T&gt; T[] 
+ toArray(T[] a) 
+          按适当顺序（从第一个到最后一个元素）返回包含此列表中所有元素的数组；返回数组的运行时类型是指定数组的运行时类型。 
+ void trimToSize() 
+          将此 ArrayList 实例的容量调整为列表的当前大小。 
+</code></pre>
+        
+          <a class="article-more-a" href="/2018/08/04/Java集合中的删除和修改方法的具体实现/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Java源码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">集合</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/04/Java集合中的删除和修改方法的具体实现/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-my-passage" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1136,6 +1264,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">程序与生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Java源码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集合</a>
               </li>
              
               <li class="article-tag-list-item">
