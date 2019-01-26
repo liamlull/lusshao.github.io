@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-08-04T06:16:00.473Z</updated>
+  <updated>2019-01-26T07:30:11.407Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>世界杯——别了梅罗。</title>
+    <link href="http://yoursite.com/2019/01/26/%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/"/>
+    <id>http://yoursite.com/2019/01/26/内存泄漏/</id>
+    <published>2019-01-26T07:03:14.000Z</published>
+    <updated>2019-01-26T07:30:11.407Z</updated>
+    
+    <content type="html"><![CDATA[<p>（百度百科）内存泄漏（Memory Leak）是指程序中己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。<br><a id="more"></a></p><p>一般说内存泄漏原因存在两种情况，一个是堆中分配的内存，在没有将其释放掉的时候，就将所有能访问这块内存的方式都删掉；另一种情况则是在内存对象已经不需要的时候，还任然保留着这块内存和他的访问方式（引用）。</p><p>在java中，由于java已经存在较好的垃圾回收机制，所以第一种情况已经得到了较好的解决，java中的内存泄漏，主要是指第二种情况。</p><p>下面给出了一个简单的内存泄漏的例子。在这个例子中，我们循环申请Object对象，并将所有申请的对象放入一个List中，如果我们仅仅是放引用本身，那么List任然引用该对象，所以这个对象对GC来说是不可能回收的。代码如下所示:</p><pre><code>List list = new ArrayList(10);for(int i = 1;i &lt; 100;i++){    Object o = new Object();    lsit.add(o);    o = null;}</code></pre><p>此时，所有Object对象都没有被释放，因为变量list引用这些对象。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;（百度百科）内存泄漏（Memory Leak）是指程序中己动态分配的堆内存由于某种原因程序未释放或无法释放，造成系统内存的浪费，导致程序运行速度减慢甚至系统崩溃等严重后果。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
+    
+      <category term="基础知识" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>Java集合中的删除和修改方法的具体实现</title>
@@ -116,9 +138,9 @@ protected  void removeRange(int fromIndex, int toIndex)
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
-      <category term="虚拟机" scheme="http://yoursite.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-    
       <category term="基础知识" scheme="http://yoursite.com/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+      <category term="虚拟机" scheme="http://yoursite.com/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
     
   </entry>
   
@@ -293,11 +315,11 @@ public class Test {
     
       <category term="Java" scheme="http://yoursite.com/tags/Java/"/>
     
+      <category term="基本知识" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
+    
       <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
       <category term="Debug" scheme="http://yoursite.com/tags/Debug/"/>
-    
-      <category term="基本知识" scheme="http://yoursite.com/tags/%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
